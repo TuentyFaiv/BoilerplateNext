@@ -35,8 +35,8 @@
       "@utils": [
         "src/common/utils.ts"
       ],
-      "@interfaces": [
-        "src/common/interfaces/index.ts"
+      "@typing": [
+        "src/common/typing/index.ts"
       ],
       "@config": [
         "src/common/config.ts"
@@ -65,19 +65,21 @@
       "@pages/*": [
         "src/pages/*"
       ],
-      "@stylesComponents/*": [
-        "src/styles/components/*"
+      "@stylesComponents": [
+        "src/styles/components/index.ts"
       ],
-      "@stylesPages/*": [
-        "src/styles/pages/*"
+      "@stylesPages": [
+        "src/styles/pages/index.ts"
       ],
       "@styles": [
-        "src/styles/Globals.scss"
+        "src/styles/Globals.ts"
       ]
     }
   },
   "include": [
     "next-env.d.ts",
+    "next.config.js",
+    "next-18next.config.js",
     "**/*.ts",
     "**/*.tsx"
   ],
