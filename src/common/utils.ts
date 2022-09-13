@@ -1,3 +1,5 @@
+import type { HttpConnectionError } from "@typing/contexts";
+
 export const formatter = new Intl.NumberFormat("en-US", {
   style: "currency",
   currency: "USD",
@@ -27,20 +29,24 @@ export class PaymentError extends Error {
 
 export class ServiceError extends Error {
   title: string;
-  text: string;
   date: Date;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(title = "!Connection Error¡", text = "", ...params: any[]) {
+  constructor(
+    private data: HttpConnectionError,
+    title = "!Connection Error¡",
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    ...params: any[]
+  ) {
     super(...params);
 
     if (Error.captureStackTrace) {
-      Error.captureStackTrace(this, PaymentError);
+      Error.captureStackTrace(this, ServiceError);
     }
 
     this.name = "ServiceError";
     this.title = title;
-    this.text = text;
     this.date = new Date();
   }
+
+  viewData = () => (this.data);
 }

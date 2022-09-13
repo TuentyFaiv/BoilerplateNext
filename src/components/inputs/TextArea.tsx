@@ -1,6 +1,6 @@
 import { withField } from "@hoc";
 
-import type { AreaFieldProps } from "@typing";
+import type { AreaFieldProps } from "@typing/proptypes";
 
 import { Input as Styles } from "@stylesComponents";
 

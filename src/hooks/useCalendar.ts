@@ -8,7 +8,7 @@ import type {
   HookCalendarParam,
   HookCalendarReturn,
   HookCalendarState
-} from "@typing";
+} from "@typing/hooks";
 
 const langs: HookCalendarLangs = {
   en: enUS,

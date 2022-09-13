@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import type { HookMediaParameters, HookMediaReturn } from "@typing";
+import type { HookMediaParameters, HookMediaReturn } from "@typing/hooks";
 
 export default function useMedia(mediaQuery: HookMediaParameters = null): HookMediaReturn {
   const [device, setDevice] = useState(false);

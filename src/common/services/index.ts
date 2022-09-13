@@ -1,3 +1,5 @@
+import { Http } from "@context";
+
 export { default as useAuthService } from "./auth";
 
-export default {};
+export const createHttpSSR = (token = "") => new Http(token);

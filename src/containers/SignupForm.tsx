@@ -7,7 +7,7 @@ import { SignupSchema, DEFAULT_SIGNUP_VALUES } from "@schemas";
 // import { useAppContext } from "@context";
 
 import type { FormikHelpers } from "formik";
-import type { SignupValues } from "@typing";
+import type { SignupValues } from "@typing/services";
 
 import { Input } from "@components";
 

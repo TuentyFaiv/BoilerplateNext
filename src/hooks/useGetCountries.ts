@@ -1,4 +1,4 @@
-import type { HookCountries } from "@typing";
+import type { HookCountries } from "@typing/hooks";
 
 export default function useGetCountries(): HookCountries {
   return {

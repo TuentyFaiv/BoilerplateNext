@@ -1,20 +1,38 @@
 import { createContext, useContext, useMemo } from "react";
-import { useAppContext, Http } from "@context";
+import { useRouter } from "next/router";
+import { useSession } from "next-auth/react";
+import { Http } from "@context";
 
-import type { ContextService, ContextServiceProvider } from "@typing";
+import type { ContextService, ContextServiceProvider } from "@typing/contexts";
 
 const ServiceContext = createContext<ContextService>({
-  api: null
+  api: null,
+  loading: false,
+  auth: false
 });
 
 export function ServiceProvider({ children }: ContextServiceProvider) {
-  const { global: { sessionId, secret } } = useAppContext();
+  const { push, pathname } = useRouter();
+  const { data, status } = useSession({
+    required: true,
+    onUnauthenticated() {
+      if (pathname !== "/auth/signin") {
+        push("/auth/signin");
+      }
+    }
+  });
+  const loading = status === "loading";
+  const auth = status === "authenticated";
 
   const api = useMemo(() => (
-    new Http(sessionId ?? "", secret ?? "")
-  ), [sessionId, secret]);
+    new Http(data?.user?.name ?? "")
+  ), [data?.user?.name]);
 
-  const value = useMemo(() => ({ api }), [api]);
+  const value = useMemo(() => ({
+    api,
+    loading,
+    auth
+  }), [api, loading, auth]);
 
   return (
     <ServiceContext.Provider value={value}>

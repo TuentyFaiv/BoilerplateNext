@@ -1,7 +1,7 @@
 import { withField } from "@hoc";
 
 import type { ChangeEvent } from "react";
-import type { FileFieldProps } from "@typing";
+import type { FileFieldProps } from "@typing/proptypes";
 
 import { Input as Styles } from "@stylesComponents";
 

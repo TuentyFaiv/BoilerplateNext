@@ -2,7 +2,7 @@ import { forwardRef } from "react";
 import { withDatasets } from "@hoc";
 
 import type { Ref } from "react";
-import type { InputProps } from "@typing";
+import type { InputProps } from "@typing/proptypes";
 
 import { Input as Styles } from "@stylesComponents";
 

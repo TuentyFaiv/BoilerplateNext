@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { useCallback, useEffect, useState } from "react";
 
-import type { HookModalFunc, HookModalParameters, HookModalReturn } from "@typing";
+import type { HookModalFunc, HookModalParameters, HookModalReturn } from "@typing/hooks";
 
 export default function useModal(mediaQuery: HookModalParameters = null, element = "body"): HookModalReturn {
   const [modal, setModal] = useState(false);

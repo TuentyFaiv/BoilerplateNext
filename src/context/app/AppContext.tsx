@@ -1,6 +1,6 @@
 import { createContext, useContext, useReducer, useMemo } from "react";
 
-import type { ContextApp, ContextAppProvider, ContextAppState } from "@typing";
+import type { ContextApp, ContextAppProvider, ContextAppState } from "@typing/contexts";
 
 import reducer from "./reducer";
 

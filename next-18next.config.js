@@ -8,6 +8,7 @@ module.exports = {
   },
   localePath: path.resolve("./public/locales"),
   ns: [
+    "auth",
     "common",
     "header",
     "footer",

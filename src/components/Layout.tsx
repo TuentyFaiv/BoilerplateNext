@@ -1,4 +1,4 @@
-import type { LayoutProps } from "@typing";
+import type { LayoutProps } from "@typing/proptypes";
 
 import { Layout as Styles } from "@stylesComponents";
 

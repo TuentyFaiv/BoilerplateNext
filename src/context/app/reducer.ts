@@ -1,6 +1,6 @@
-import { Actions } from "@typing";
+import { Actions } from "@typing/enums";
 
-import type { ContextAppReducerAction, ContextAppState } from "@typing";
+import type { ContextAppReducerAction, ContextAppState } from "@typing/contexts";
 
 const DEFAULT_IMAGE = ""; // Change for a imported image
 

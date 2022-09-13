@@ -34,6 +34,8 @@ export type ContextAppProvider = {
 
 export type ContextService = {
   api: Http | null;
+  loading: boolean;
+  auth: boolean;
 };
 
 export type ContextServiceProvider = {
@@ -63,9 +65,18 @@ export type HTTPConfigMethods<T> = Omit<HTTPConfigConnection<T>, "method" | "que
 & HTTPConfigOptionalMethods;
 
 export type HTTPConnectionReturn<T> = {
-  data: T;
-  error: string;
-  result: number;
+  success: boolean;
+  message: string;
+  payload: T;
+};
+
+export type HttpConnectionError = {
+  status: string;
+  message: string;
+  errors: {
+    description?: string;
+  };
+  code: number;
 };
 
 export type HTTPBodyFiles<T> = {

@@ -5,7 +5,7 @@ import { withPortal } from "@hoc";
 import { useDatas } from "@hooks";
 
 import type { MouseEvent } from "react";
-import type { ModalProps } from "@typing";
+import type { ModalProps } from "@typing/proptypes";
 
 import { Modal as Styles } from "@stylesComponents";
 

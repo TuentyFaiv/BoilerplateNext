@@ -5,7 +5,7 @@ import { useDatas } from "@hooks";
 
 import type { ComponentType, Ref } from "react";
 import type { FieldHookConfig } from "formik";
-import type { HOCField, HOCFieldProps } from "@typing";
+import type { HOCField, HOCFieldProps } from "@typing/hocs";
 
 import { Input as Styles } from "@stylesComponents";
 

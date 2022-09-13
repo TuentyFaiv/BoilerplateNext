@@ -1,6 +1,6 @@
 import { withPortal } from "@hoc";
 
-import type { LoaderProps } from "@typing";
+import type { LoaderProps } from "@typing/proptypes";
 
 import { LoaderPage as Styles } from "@stylesComponents";
 

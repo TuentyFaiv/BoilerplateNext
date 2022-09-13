@@ -1,5 +1,6 @@
 import swal from "sweetalert";
-import { HTTPContentType, HTTPMetod } from "@typing";
+import { HTTPContentType, HTTPMetod } from "@typing/enums";
+import { ServiceError } from "@utils";
 import globalConfig from "@config";
 
 import type {
@@ -8,12 +9,12 @@ import type {
   HTTPConfigGet,
   HTTPConfigMethods,
   HTTPConnectionReturn
-} from "@typing";
+} from "@typing/contexts";
 
 export default class Http {
   private api: string;
 
-  constructor(private token?: string, private secret?: string) {
+  constructor(private token?: string) {
     this.api = globalConfig.api;
 
     Object.freeze(this);
@@ -23,13 +24,11 @@ export default class Http {
     try {
       const contentType = config.contentType ?? HTTPContentType.JSON;
       const headers = {
-        "Accept-Language": config.lang ?? "",
         ...(contentType !== HTTPContentType.FILES && config.method !== HTTPMetod.GET ? {
           "Content-Type": contentType
         } : {}),
         ...(config.secure ? {
-          Authorization: `Bearer ${this.token}`,
-          Key: this.secret
+          Authorization: `Bearer ${this.token}`
         } : {})
       };
       let body: string | FormData;
@@ -67,18 +66,23 @@ export default class Http {
         ...(config.signal ? { signal: config.signal } : {})
       });
 
-      if (!request.ok) throw new Error(config.errorMessage ?? "");
-
       switch (contentType) {
         default:
-          const { data, error, result } = await request.json();
+          const response = await request.json();
 
-          if (error && !result) throw new Error(config.errorMessage ?? error);
+          if (response.errors || request.status !== 200) {
+            throw new ServiceError({
+              message: config.errorMessage ?? response.message,
+              code: response?.code ?? "",
+              status: response.status,
+              errors: response.errors ?? response.error ?? ""
+            });
+          }
 
           return {
-            data,
-            error,
-            result
+            success: response.success,
+            message: response.message,
+            payload: response.payload
           };
       }
     } catch (error) {
@@ -87,6 +91,12 @@ export default class Http {
       if (error instanceof Error) {
         message = error.message;
         name = error.name;
+      }
+      if (error instanceof ServiceError) {
+        message = error.message;
+        name = error.name;
+
+        throw new ServiceError(error.viewData());
       }
 
       if (!name.includes("AbortError")) {

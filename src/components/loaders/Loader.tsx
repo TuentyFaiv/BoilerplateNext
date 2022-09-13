@@ -1,4 +1,4 @@
-import type { LoaderProps } from "@typing";
+import type { LoaderProps } from "@typing/proptypes";
 
 import { Loader as Styles } from "@stylesComponents";
 

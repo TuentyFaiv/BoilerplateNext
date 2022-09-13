@@ -35,8 +35,8 @@
       "@utils": [
         "src/common/utils.ts"
       ],
-      "@typing": [
-        "src/common/typing/index.ts"
+      "@typing/*": [
+        "src/common/typing/*"
       ],
       "@config": [
         "src/common/config.ts"

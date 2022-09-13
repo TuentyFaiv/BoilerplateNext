@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Image from "next/image";
 import { ErrorMessage, Field } from "formik";
 
-import type { LabelI, TextI } from "@typing";
+import type { LabelI, TextI } from "@typing/styles";
 
 export const Label = styled.label<LabelI>`
   width: 100%;

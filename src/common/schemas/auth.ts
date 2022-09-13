@@ -2,12 +2,14 @@ import * as Yup from "yup";
 
 import type {
   Boot,
-  BootAuthSignup,
+  BootAuthSignup
+} from "@typing/types";
+import type {
   ForgotValues,
   ResetValues,
   SigninValues,
   SignupValues
-} from "@typing";
+} from "@typing/services";
 
 export const ForgotSchema = (boot: Boot) => Yup.object().shape({
   email: Yup.string().required(boot.required)

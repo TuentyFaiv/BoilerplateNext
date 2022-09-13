@@ -1,14 +1,14 @@
 import { css } from "styled-components";
 
+import type { ObjStrCustom } from "@typing/types";
 import type {
   BackgroundImage,
   Content,
   Flex,
   ForSize,
   Grid,
-  ObjStrCustom,
   Text
-} from "@typing";
+} from "@typing/styles";
 
 export const forSize = (size: ForSize, content: string) => {
   const medias: ObjStrCustom<string> = {

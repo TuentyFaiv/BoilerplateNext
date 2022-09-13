@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { useModal } from "@hooks";
 
-import type { LanguageProps } from "@typing";
+import type { LanguageProps } from "@typing/proptypes";
 
 import { Language as Styles } from "@stylesComponents";
 

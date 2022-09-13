@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { withField } from "@hoc";
 
-import type { InputFieldProps } from "@typing";
+import type { InputFieldProps } from "@typing/proptypes";
 
 import { Input as Styles } from "@stylesComponents";
 

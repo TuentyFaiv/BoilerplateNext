@@ -2,7 +2,7 @@ import { memo, useEffect, useRef } from "react";
 import { withField } from "@hoc";
 
 import type { MouseEvent } from "react";
-import type { SelectFieldProps } from "@typing";
+import type { SelectFieldProps } from "@typing/proptypes";
 
 import { Input as Styles } from "@stylesComponents";
 
