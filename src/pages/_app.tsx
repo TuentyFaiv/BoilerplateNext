@@ -4,19 +4,16 @@ import { AppProvider, ServiceProvider } from "@context";
 
 import type { AppProps } from "next/app";
 
-import GlobalStyle from "@styles";
+import "@styles";
 
 function MyApp({ Component, pageProps }: AppProps) {
 
   return (
-    <>
-      <GlobalStyle />
-      <AppProvider>
-        <ServiceProvider>
-          <Component {...pageProps} />
-        </ServiceProvider>
-      </AppProvider>
-    </>
+    <AppProvider>
+      <ServiceProvider>
+        <Component {...pageProps} />
+      </ServiceProvider>
+    </AppProvider>
   );
 }
 

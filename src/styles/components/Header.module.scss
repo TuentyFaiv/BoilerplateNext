@@ -1,0 +1,32 @@
+@import "../Mixins";
+.header {
+  width: 100%;
+
+  &__titlelink {
+    color: #0070F3;
+    text-decoration: none;
+    &:hover,
+    &:focus,
+    &:active {
+      text-decoration: underline;
+    }
+  }
+
+  &__title {
+    @include text(6.4rem, 700, 7.4rem, center);
+    margin: 0;
+  }
+
+  &__description {
+    @include text(2.4rem, 400, 3.6rem, center);
+  }
+
+  &__code {
+  @include text(1.8rem, 400, 2.6rem);
+  background: #fafafa;
+  border-radius: 5px;
+  padding: 1.2rem;
+  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+    Bitstream Vera Sans Mono, Courier New, monospace;
+  }
+}

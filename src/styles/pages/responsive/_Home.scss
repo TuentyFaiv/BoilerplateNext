@@ -1,0 +1,14 @@
+.home {
+  @include for-size(tablet-small) {
+    &__grid {
+      width: 100%;
+      flex-direction: column;
+    }
+  }
+  @include for-size(phone-mid) {
+    &__grid {
+      width: 50%;
+    }
+  }
+}
+

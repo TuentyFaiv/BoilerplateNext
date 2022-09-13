@@ -65,14 +65,14 @@
       "@pages/*": [
         "src/pages/*"
       ],
-      "@stylesComponents": [
-        "src/styles/components/index.ts"
+      "@stylesComponents/*": [
+        "src/styles/components/*"
       ],
-      "@stylesPages": [
-        "src/styles/pages/index.ts"
+      "@stylesPages/*": [
+        "src/styles/pages/*"
       ],
       "@styles": [
-        "src/styles/Globals.ts"
+        "src/styles/Globals.scss"
       ]
     }
   },
@@ -81,7 +81,8 @@
     "next.config.js",
     "next-18next.config.js",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "**/*.scss"
   ],
   "exclude": [
     "node_modules"

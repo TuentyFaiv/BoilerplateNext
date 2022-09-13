@@ -7,7 +7,7 @@ import { useDatas } from "@hooks";
 import type { MouseEvent } from "react";
 import type { ModalProps } from "@typing";
 
-import { Modal as Styles } from "@stylesComponents";
+// import { Modal as Styles } from "@stylesComponents";
 
 // import Logo from "@icons/logo.svg";
 // import IconClose from "@icons/icon-close.svg";
@@ -34,7 +34,7 @@ function Modal({ children, title = "", config: conf = {}, open, onClose }: Modal
   if (!open) return null;
 
   return (
-    <Styles.Overlay
+    <section
       ref={modalRef}
       data-hastitle={Boolean(title)}
       data-hide="false"
@@ -42,30 +42,30 @@ function Modal({ children, title = "", config: conf = {}, open, onClose }: Modal
       role="dialog"
       {...datas}
     >
-      <Styles.Container onClick={handleStopPropagation} role="alertdialog">
+      <div onClick={handleStopPropagation} role="alertdialog">
         {config.header ? (
-          <Styles.Header>
+          <div>
             {title ? (
-              <Styles.Title>{title}</Styles.Title>
+              <h1>{title}</h1>
             ) : (
               null
               // <Styles.Logo src={Logo} alt="" />
             )}
-          </Styles.Header>
+          </div>
         ) : null}
-        <Styles.Content>
+        <div>
           {children(config)}
-        </Styles.Content>
-        <Styles.Close type="button" onClick={onClose}>
+        </div>
+        <button type="button" onClick={onClose}>
           {!config.close ? (
             <span>{t("modal-accept")}</span>
           ) : (
             null
             // <Styles.CloseIcon src={IconClose} alt="" />
           )}
-        </Styles.Close>
-      </Styles.Container>
-    </Styles.Overlay>
+        </button>
+      </div>
+    </section>
   );
 }
 

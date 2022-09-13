@@ -1,11 +1,11 @@
 import type { LoaderProps } from "@typing";
 
-import { Loader as Styles } from "@stylesComponents";
+// import { Loader as Styles } from "@stylesComponents";
 
 const Loader = ({ msg }: LoaderProps) => (
-  <Styles.Container>
+  <div>
     {msg}
-  </Styles.Container>
+  </div>
 );
 
 export default Loader;
