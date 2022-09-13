@@ -7,7 +7,7 @@ import { useDatas } from "@hooks";
 import type { MouseEvent } from "react";
 import type { ModalProps } from "@typing/proptypes";
 
-import { Modal as Styles } from "@stylesComponents";
+import styles from "@stylesComponents/Modal.module.scss";
 
 // import Logo from "@icons/logo.svg";
 // import IconClose from "@icons/icon-close.svg";
@@ -34,38 +34,43 @@ function Modal({ children, title = "", config: conf = {}, open, onClose }: Modal
   if (!open) return null;
 
   return (
-    <Styles.Overlay
+    <section
       ref={modalRef}
       data-hastitle={Boolean(title)}
       data-hide="false"
       onClick={onClose}
       role="dialog"
+      className={styles.modal__overlay}
       {...datas}
     >
-      <Styles.Container onClick={handleStopPropagation} role="alertdialog">
+      <div className={styles.modal__container} onClick={handleStopPropagation} role="alertdialog">
         {config.header ? (
-          <Styles.Header>
+          <div className={styles.modal__header}>
             {title ? (
-              <Styles.Title>{title}</Styles.Title>
+              <h1 className={styles.modal__title}>{title}</h1>
             ) : (
               null
-              // <Styles.Logo src={Logo} alt="" />
+              // <picture className={styles.modal__logo}>
+              //   <Image src={Logo} alt="" />
+              // </picture>
             )}
-          </Styles.Header>
+          </div>
         ) : null}
-        <Styles.Content>
+        <div className={styles.modal__content}>
           {children(config)}
-        </Styles.Content>
-        <Styles.Close type="button" onClick={onClose}>
+        </div>
+        <button type="button" onClick={onClose} className={styles.modal__close}>
           {!config.close ? (
             <span>{t("modal-accept")}</span>
           ) : (
             null
-            // <Styles.CloseIcon src={IconClose} alt="" />
+            // <picture className={styles.modal__closeicon}>
+            //   <Image src={IconClose} alt="" />
+            // </picture>
           )}
-        </Styles.Close>
-      </Styles.Container>
-    </Styles.Overlay>
+        </button>
+      </div>
+    </section>
   );
 }
 

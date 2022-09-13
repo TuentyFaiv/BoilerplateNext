@@ -1,0 +1,49 @@
+@import "../Mixins";
+
+.home {
+  &__container {
+    padding: 8rem 0.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  &__grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 800px;
+    margin-top: 4.8rem;
+  }
+  &__card {
+    min-height: 185px;
+    margin: 1.6rem;
+    padding: 2.4rem;
+    text-align: left;
+    color: inherit;
+    text-decoration: none;
+    border: 1px solid #eaeaea;
+    border-radius: 10px;
+    transition: color 0.15s ease, border-color 0.15s ease;
+    width: 45%;
+    &:hover,
+    &:focus,
+    &:active {
+      color: #0070f3;
+      border-color: #0070f3;
+    }
+  }
+  
+  &__cardtitle {
+    @include text(2.4rem, 700);
+    margin: 0 0 1.6rem 0;
+  }
+  
+  &__cardtext {
+    @include text(2rem, 400, 3rem);
+    margin: 0;
+  }
+}
+
+@import "./responsive/Home";

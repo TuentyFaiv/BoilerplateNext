@@ -4,7 +4,7 @@ import { useModal } from "@hooks";
 
 import type { LanguageProps } from "@typing/proptypes";
 
-import { Language as Styles } from "@stylesComponents";
+import styles from "@stylesComponents/Language.module.scss";
 
 export default function Language({ onClose }: LanguageProps) {
   const router = useRouter();
@@ -19,26 +19,28 @@ export default function Language({ onClose }: LanguageProps) {
   };
 
   return (
-    <Styles.Container
+    <span
       onClick={toggleModal}
       role="button"
       tabIndex={0}
       data-open={modal}
+      className={styles.language}
     >
       {lang}
       {modal && (
-        <Styles.Options>
+        <span className={styles.language__options}>
           {router.locales?.map((language) => (
-            <Styles.Option
+            <button
               key={language}
               type="button"
               onClick={() => handleChangeLanguage(language)}
+              className={styles.language__option}
             >
               {`${language}`.split("-")[0]}
-            </Styles.Option>
+            </button>
           ))}
-        </Styles.Options>
+        </span>
       )}
-    </Styles.Container>
+    </span>
   );
 }

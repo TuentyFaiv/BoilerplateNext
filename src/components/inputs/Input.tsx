@@ -1,9 +1,10 @@
 import { useState } from "react";
+import Image from "next/image";
 import { withField } from "@hoc";
 
 import type { InputFieldProps } from "@typing/proptypes";
 
-import { Input as Styles } from "@stylesComponents";
+import styles from "@stylesComponents/Input.module.scss";
 
 // import IconEye from "@icons/eye-icon.svg";
 // import IconEyeClose from "@icons/eye-close-icon.svg";
@@ -13,24 +14,26 @@ const Input = ({ error, field, meta, helpers, type, ...props }: Omit<InputFieldP
 
   return (
     <>
-      <Styles.Input
+      <input
         id={props.id || props.name}
         data-error={error}
         type={(type === "password" && showPassword) ? "text" : type}
+        className={styles.field__input}
         {...field}
         {...props}
       />
       {type === "password" && (
-        <Styles.Show
+        <button
           type="button"
           onClick={() => setShowPassword(!showPassword)}
+          className={styles.field__show}
         >
-          <Styles.ShowIcon
+          <Image
             // src={showPassword ? IconEye : IconEyeClose}
             src=""
             alt={showPassword ? "Show password" : "Hide password"}
           />
-        </Styles.Show>
+        </button>
       )}
     </>
   );

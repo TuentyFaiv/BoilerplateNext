@@ -1,11 +1,11 @@
 import type { LoaderProps } from "@typing/proptypes";
 
-import { Loader as Styles } from "@stylesComponents";
+import styles from "@stylesComponents/Loader.module.scss";
 
 const Loader = ({ msg }: LoaderProps) => (
-  <Styles.Container>
+  <div className={styles.loader}>
     {msg}
-  </Styles.Container>
+  </div>
 );
 
 export default Loader;

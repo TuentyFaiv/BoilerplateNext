@@ -4,7 +4,7 @@ import { withField } from "@hoc";
 import type { MouseEvent } from "react";
 import type { SelectFieldProps } from "@typing/proptypes";
 
-import { Input as Styles } from "@stylesComponents";
+import styles from "@stylesComponents/Input.module.scss";
 
 const SelectInput = ({ error, field, meta, helpers, ...props }: Omit<SelectFieldProps, "data">) => {
   const { options = [], value = null, onSelect, ...remainingProps } = props;
@@ -48,26 +48,28 @@ const SelectInput = ({ error, field, meta, helpers, ...props }: Omit<SelectField
   }, [options, field, helpers, onSelect]);
 
   return (
-    <Styles.Select
+    <div
       ref={selectRef}
       onClick={handleSelect}
       role="button"
       tabIndex={0}
+      className={styles.field__select}
     >
-      <Styles.SelectValue>
+      <p className={styles.field__selectvalue}>
         {value ?? validateValue}
-      </Styles.SelectValue>
-      <Styles.SelectOptions onMouseLeave={handleCloseSelect}>
+      </p>
+      <div className={styles.field__selectoptions} onMouseLeave={handleCloseSelect}>
         {options.map((option) => (
-          <Styles.SelectOption
+          <span
             key={option.key ?? option.value}
             data-value={option.value}
+            className={styles.field__select}
           >
             {option.label}
-          </Styles.SelectOption>
+          </span>
         ))}
-      </Styles.SelectOptions>
-    </Styles.Select>
+      </div>
+    </div>
   );
 };
 

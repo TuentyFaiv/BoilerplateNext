@@ -16,9 +16,9 @@ export function ServiceProvider({ children }: ContextServiceProvider) {
   const { data, status } = useSession({
     required: true,
     onUnauthenticated() {
-      if (pathname !== "/auth/signin") {
-        push("/auth/signin");
-      }
+      // if (pathname !== "/auth/signin") {
+      //   push("/auth/signin");
+      // }
     }
   });
   const loading = status === "loading";

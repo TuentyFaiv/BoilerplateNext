@@ -2,14 +2,14 @@ import { withPortal } from "@hoc";
 
 import type { LoaderProps } from "@typing/proptypes";
 
-import { LoaderPage as Styles } from "@stylesComponents";
+import styles from "@stylesComponents/LoaderPage.module.scss";
 
 import { Loader } from "@components";
 
 const LoaderPage = ({ msg = "" }: LoaderProps) => (
-  <Styles.Container>
+  <div className={styles.loaderpage}>
     <Loader msg={msg} />
-  </Styles.Container>
+  </div>
 );
 
 export default withPortal(LoaderPage, "#loader-root");

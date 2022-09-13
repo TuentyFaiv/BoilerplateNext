@@ -1,0 +1,22 @@
+.field {
+  width: 100%;
+  &__text {}
+  &__input {}
+  &__show {}
+  &__profile {}
+  &__profileimage {}
+  &__file {}
+  &__textarea {
+    width: 100%;
+  }
+  &__radio {}
+  &__radioerror {}
+  &__checkbox {}
+  &__checkboxerror {}
+  &__select {
+    width: 100%;
+  }
+  &__selectvalue {}
+  &__selectoptions {}
+  &__selectoption {}
+}

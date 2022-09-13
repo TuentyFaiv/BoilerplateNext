@@ -1,35 +1,37 @@
 import { forwardRef } from "react";
+import { ErrorMessage, Field } from "formik";
 import { withDatasets } from "@hoc";
 
 import type { Ref } from "react";
 import type { InputProps } from "@typing/proptypes";
 
-import { Input as Styles } from "@stylesComponents";
+import styles from "@stylesComponents/Input.module.scss";
 
 const RadioInput = ({ children, name, checked, value, ...props }: Omit<InputProps, "data">, ref: Ref<HTMLLabelElement>) => (
-  <Styles.Label
+  <label
     ref={ref}
     htmlFor={props.id}
     data-checked={checked}
     data-payment={props.payment}
     onClick={props.onSelect}
-    radio
+    className={styles.field}
     {...props.datas}
   >
-    <Styles.Radio
+    <Field
       type="radio"
       id={props.id}
       name={name}
       value={value}
       disabled={props.datas["data-disabled"]}
+      className={styles.field__radio}
     />
-    <Styles.RadioError component="span" name={name} />
-    <Styles.Text radio>
+    <ErrorMessage component="span" name={name} className={styles.field__radioerror} />
+    <p className={styles.field__text}>
       {props.label}
       {children}
       {props.label2}
-    </Styles.Text>
-  </Styles.Label>
+    </p>
+  </label>
 );
 
 export default withDatasets<InputProps>(forwardRef(RadioInput));

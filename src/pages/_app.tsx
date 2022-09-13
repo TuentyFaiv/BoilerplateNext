@@ -7,7 +7,7 @@ import { AppProvider, ServiceProvider } from "@context";
 
 import type { AppProps } from "next/app";
 
-import GlobalStyle from "@styles";
+import "@styles";
 
 import { LoaderPage } from "@components";
 
@@ -34,7 +34,6 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <GlobalStyle />
       {loading ? <LoaderPage /> : null}
       <SessionProvider session={pageProps.session}>
         <AppProvider>

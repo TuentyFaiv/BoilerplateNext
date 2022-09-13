@@ -1,31 +1,32 @@
 import { forwardRef } from "react";
+import { ErrorMessage, Field } from "formik";
 import { withDatasets } from "@hoc";
 
 import type { Ref } from "react";
 import type { InputProps } from "@typing/proptypes";
 
-import { Input as Styles } from "@stylesComponents";
+import styles from "@stylesComponents/Input.module.scss";
 
 const CheckboxInput = ({ children, label, label2 = null, ...props }: Omit<InputProps, "data">, ref: Ref<HTMLLabelElement>) => (
-  <Styles.Label
+  <label
     ref={ref}
     htmlFor={props.id}
     data-checked={props.checked}
     onClick={props.onSelect}
-    check
+    className={styles.field}
     {...props.datas}
   >
     {props.value ? (
-      <Styles.Checkbox type="checkbox" value={props.value} id={props.id} name={props.name} />
+      <Field type="checkbox" value={props.value} id={props.id} name={props.name} className={styles.field__checkbox} />
     ) : (
-      <Styles.Checkbox type="checkbox" id={props.id} name={props.name} />
+      <Field type="checkbox" id={props.id} name={props.name} className={styles.field__checkbox} />
     )}
-    <Styles.CheckboxError component="span" name={props.name} />
-    <Styles.Text check>
+    <ErrorMessage component="span" name={props.name} className={styles.field__checkboxerror} />
+    <p className={styles.field__text}>
       {label}
       {children}
       {label2}
-    </Styles.Text>
-  </Styles.Label>
+    </p>
+  </label>
 );
 export default withDatasets<InputProps>(forwardRef(CheckboxInput));

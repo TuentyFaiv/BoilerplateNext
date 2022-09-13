@@ -1,0 +1,10 @@
+@import "../Mixins";
+
+.layout {
+  @include flex(flex-end);
+  flex: 1;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+@import "./responsive/Layout";

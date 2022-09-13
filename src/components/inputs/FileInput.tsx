@@ -1,9 +1,10 @@
+import Image from "next/image";
 import { withField } from "@hoc";
 
 import type { ChangeEvent } from "react";
 import type { FileFieldProps } from "@typing/proptypes";
 
-import { Input as Styles } from "@stylesComponents";
+import styles from "@stylesComponents/Input.module.scss";
 
 const FileInput = ({ error, field, meta, helpers, ...props }: Omit<FileFieldProps, "data" | "file">) => {
   const { profile, defaultValue, alt, accept = "image/*", onChange, ...remainingProps } = props;
@@ -21,12 +22,15 @@ const FileInput = ({ error, field, meta, helpers, ...props }: Omit<FileFieldProp
 
   if (profile) {
     return (
-      <Styles.Profile>
-        <Styles.ProfileImage
-          src={value ? URL.createObjectURL(value) : defaultValue ?? ""}
-          alt={value?.name || alt}
-        />
-        <Styles.File
+      <div className={styles.field__profile}>
+        <div className={styles.field__profileimage}>
+          <Image
+            src={value ? URL.createObjectURL(value) : defaultValue ?? ""}
+            alt={value?.name || alt}
+          />
+        </div>
+        <input
+          className={styles.field__file}
           id={props.id || props.name}
           data-error={error}
           type="file"
@@ -35,12 +39,13 @@ const FileInput = ({ error, field, meta, helpers, ...props }: Omit<FileFieldProp
           onBlur={onBlur}
           {...remainingProps}
         />
-      </Styles.Profile>
+      </div>
     );
   }
 
   return (
-    <Styles.File
+    <input
+      className={styles.field__file}
       id={props.id || props.name}
       data-error={error}
       type="file"

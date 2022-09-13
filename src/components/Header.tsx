@@ -1,20 +1,20 @@
 import { useTranslation } from "next-i18next";
 
-import { Header as Styles } from "@stylesComponents";
+import styles from "@stylesComponents/Header.module.scss";
 
 export default function Header() {
   const { t } = useTranslation("header");
 
   return (
-    <Styles.Container>
-      <Styles.Title>
+    <header className={styles.header}>
+      <h1 className={styles.header__title}>
         {t("welcome")}
-        <Styles.TitleLink href="https://nextjs.org">Next.js!</Styles.TitleLink>
-      </Styles.Title>
-      <Styles.Description>
+        <a className={styles.header__titlelink} href="https://nextjs.org">Next.js!</a>
+      </h1>
+      <p className={styles.header__description}>
         {t("get-started")}
-        <Styles.Code>pages/index.js</Styles.Code>
-      </Styles.Description>
-    </Styles.Container>
+        <code className={styles.header__code}>pages/index.js</code>
+      </p>
+    </header>
   );
 }
