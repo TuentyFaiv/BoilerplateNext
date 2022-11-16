@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
+    "target": "es5",
     "lib": [
       "dom",
       "dom.iterable",
@@ -18,70 +18,62 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
     "baseUrl": ".",
     "paths": {
       "@images/*": [
-        "src/assets/images/*"
+        "app/assets/images/*"
       ],
       "@icons/*": [
-        "src/assets/images/icons/*"
+        "app/assets/images/icons/*"
       ],
       "@videos/*": [
-        "src/assets/videos/*"
-      ],
-      "@fonts/*": [
-        "src/assets/fonts/*"
-      ],
-      "@utils": [
-        "src/common/utils.ts"
-      ],
-      "@typing/*": [
-        "src/common/typing/*"
-      ],
-      "@config": [
-        "src/common/config.ts"
+        "app/assets/videos/*"
       ],
       "@schemas": [
-        "src/common/schemas/index.ts"
+        "app/common/schemas/index.ts"
       ],
       "@services": [
-        "src/common/services/index.ts"
+        "app/common/services/index.ts"
+      ],
+      "@typing/*": [
+        "app/common/typing/*"
+      ],
+      "@utils/*": [
+        "app/common/utils/*"
+      ],
+      "@config": [
+        "app/common/config.ts"
       ],
       "@components": [
-        "src/components/index.ts"
-      ],
-      "@containers": [
-        "src/containers/index.ts"
-      ],
-      "@context": [
-        "src/context/index.ts"
-      ],
-      "@hooks": [
-        "src/hooks/index.ts"
+        "app/components/index.ts"
       ],
       "@hoc": [
-        "src/hoc/index.ts"
+        "app/hoc/index.ts"
       ],
-      "@pages/*": [
-        "src/pages/*"
-      ],
-      "@stylesComponents": [
-        "src/styles/components/index.ts"
-      ],
-      "@stylesPages": [
-        "src/styles/pages/index.ts"
+      "@hooks": [
+        "app/hooks/index.ts"
       ],
       "@styles": [
-        "src/styles/Globals.ts"
+        "app/styles/index.ts"
+      ],
+      "@cstyles": [
+        "app/styles/components/index.ts"
+      ],
+      "@pstyles": [
+        "app/styles/pages/index.ts"
       ]
     }
   },
   "include": [
     "next-env.d.ts",
-    "next.config.js",
-    "next-18next.config.js",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"
